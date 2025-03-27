@@ -42,11 +42,11 @@ export default function TaskForm({ isOpen, onClose, task }) {
     useAppContext();
 
   const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    status: "pending",
-    priority: "medium",
-    due_date: null,
+    title: undefined,
+    description: undefined,
+    status: undefined,
+    priority: undefined,
+    due_date: undefined,
     folders: [],
     tags: [],
   });
@@ -55,21 +55,21 @@ export default function TaskForm({ isOpen, onClose, task }) {
   useEffect(() => {
     if (task) {
       setFormData({
-        title: task.title || "",
-        description: task.description || "",
-        status: task.status || "pending",
-        priority: task.priority || "medium",
-        due_date: task.due_date ? new Date(task.due_date) : null,
+        title: task.title,
+        description: task.description,
+        status: task.status,
+        priority: task.priority,
+        due_date: task.due_date ? new Date(task.due_date) : undefined,
         folders: task.folders || [],
         tags: task.tags || [],
       });
     } else {
       setFormData({
-        title: "",
-        description: "",
-        status: "pending",
-        priority: "medium",
-        due_date: null,
+        title: undefined,
+        description: undefined,
+        status: undefined,
+        priority: undefined,
+        due_date: undefined,
         folders: selectedFolder ? [selectedFolder] : [],
         tags: [],
       });
